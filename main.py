@@ -14,6 +14,7 @@ from pidev.kivy.PauseScreen import PauseScreen
 from pidev.kivy import DPEAButton
 from pidev.kivy import ImageButton
 from pidev.kivy.selfupdatinglabel import SelfUpdatingLabel
+from kivy.animation import Animation
 
 from datetime import datetime
 
@@ -73,6 +74,10 @@ class MainScreen(Screen):
     def counter(self):
         self.ids.cnt.i += 1
         self.ids.cnt.text = str(self.ids.cnt.i)
+
+    def animate(self):
+        anim = Animation(x=100, y=100)
+        anim.start(widget)
 
     def admin_action(self):
         """
