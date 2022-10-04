@@ -18,6 +18,9 @@ from kivy.animation import Animation
 
 from datetime import datetime
 
+from random import random
+from kivy.clock import Clock
+
 time = datetime
 
 MIXPANEL_TOKEN = "x"
@@ -43,12 +46,7 @@ class ProjectNameGUI(App):
 
 Window.clearcolor = (1, 1, 1, 1)  # White
 
-
 class MainScreen(Screen):
-    """
-    Class to handle the main screen and its associated touch events
-    """
-
     def backroundChangeMain(self):
         SCREEN_MANAGER.current = 'button'
 
@@ -75,9 +73,39 @@ class MainScreen(Screen):
         self.ids.cnt.i += 1
         self.ids.cnt.text = str(self.ids.cnt.i)
 
-    def animate(self):
-        anim = Animation(x=100, y=100)
-        anim.start(widget)
+
+
+    def animate_it(self, widget, *args):
+        # Define The Animation you want to do
+        animate = Animation(
+            background_color=(0, 0, 1, 1),
+            duration=1)
+
+        # Do second animation
+        animate += Animation(
+            size_hint=(1, 1))
+
+        # Do Third animation
+        animate += Animation(
+            size_hint=(.5, .5))
+
+        animate += Animation(
+            pos_hint={"center_x": 0.1})
+
+        animate += Animation(
+            pos_hint={"center_x": 0.5})
+
+        # Start The Animation
+        animate.start(widget)
+
+        # Create a callback
+        animate.bind(on_complete=self.my_callback)
+
+        SCREEN_MANAGER.current = 'button'
+
+
+    def my_callback(self, *args):
+        self.ids.my_label.text = "Wow! Look At That!"
 
     def admin_action(self):
         """
@@ -91,6 +119,37 @@ class MainScreen(Screen):
 class Screen2(Screen):
     def imageToggle(self):
         SCREEN_MANAGER.current = 'main'
+
+    def animate_it(self, widget, *args):
+        # Define The Animation you want to do
+        animate = Animation(
+            background_color=(0, 0, 1, 1),
+            duration=1)
+
+        # Do second animation
+        animate += Animation(
+            size_hint=(1, 1))
+
+        # Do Third animation
+        animate += Animation(
+            size_hint=(.5, .5))
+
+        animate += Animation(
+            pos_hint={"center_x": 0.1})
+
+        animate += Animation(
+            pos_hint={"center_x": 0.5})
+
+        # Start The Animation
+        animate.start(widget)
+
+        # Create a callback
+        animate.bind(on_complete=self.my_callback)
+
+        SCREEN_MANAGER.current = 'main'
+
+    def my_callback(self, *args):
+        self.ids.my_label.text = "Wow! Look At That!"
 
 
 class AdminScreen(Screen):

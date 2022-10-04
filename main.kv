@@ -92,6 +92,28 @@
         outline_width: self.font_size * 0.1
         outline_color: 0, 0, 0
 
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		padding: 50
+		spacing: 20
+
+
+		Label:
+			id: my_label
+			text: "Hello World!"
+			font_size: 32
+
+		Button:
+			text: "Press Me!"
+			font_size: 32
+			size_hint: .5, .5
+			pos_hint: {"center_x": 0.5}
+
+			on_release: root.animate_it(self)
+
+
 <Screen2>:
     name: 'button'
     Button:
@@ -103,3 +125,24 @@
         on_press: root.imageToggle()
         size: 200, 150
         background_normal: 'Trollface_non-free.png'
+
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		padding: 50
+		spacing: 20
+
+
+		Label:
+			id: my_label
+			text: "Hello World!"
+			font_size: 32
+
+		Button:
+			text: "Press Me!"
+			font_size: 32
+			size_hint: .5, .5
+			pos_hint: {"center_x": 0.5}
+
+			on_release: root.animate_it(self)
