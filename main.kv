@@ -23,15 +23,20 @@
 
     Button:
         size_hint: None, None
-        text: 'press me'
-        on_press: root.image()
+        text: 'default backround'
+        size_hint: None, None
+        x: root.width * 0.25
+        y: root.height * 0.25
+        color: 1, 0, 0, 1
+        size: 200, 150
+        on_press: root.backroundChangeMain()
         size: 200, 150
         background_normal: ''
 
 
     Label:
         id: mtr
-        text: 'motor off'
+        text: 'motor'
         font_size: 40
         color: 0,0,1,1
         size: 100, 100
@@ -87,11 +92,14 @@
         outline_width: self.font_size * 0.1
         outline_color: 0, 0, 0
 
-<ButtonScreen>:
+<Screen2>:
     name: 'button'
     Button:
         size_hint: None, None
-        text: 'press me'
-        on_press: root.image()
+        text: 'backround change'
+        x: root.width * 0.25
+        y: root.height * 0.25
+        color: 1, 0, 0, 1
+        on_press: root.imageToggle()
         size: 200, 150
-        background_normal: 'dino.jpeg'
+        background_normal: 'Trollface_non-free.png'
