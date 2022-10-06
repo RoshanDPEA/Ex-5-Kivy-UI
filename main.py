@@ -20,6 +20,14 @@ from datetime import datetime
 
 from random import random
 from kivy.clock import Clock
+from kivy.properties import StringProperty
+import pygame
+
+pygame.init()
+from pidev.Joystick import Joystick
+
+stick = Joystick(0, False)
+print(stick.get_axis('x'), stick.get_axis('y'))
 
 time = datetime
 
@@ -46,9 +54,26 @@ class ProjectNameGUI(App):
 
 Window.clearcolor = (1, 1, 1, 1)  # White
 
+
 class MainScreen(Screen):
+
+    def __int__(self, **kwargs):
+        print("init")
+        super().__int__(**kwargs)
+        Clock.schedule_interval(self.update_stick, 0.01)
+
     def backroundChangeMain(self):
         SCREEN_MANAGER.current = 'button'
+
+    # def stickShow(self):
+    # self.ids.stick.text = str(stick.get_axis('x')) + " " + str(stick.get_axis('y'))
+
+    def update_stick(self, dt):
+        print("is run")
+        self.ids.stick1.x = self.width * stick.get_axis('x')
+        self.ids.stick1.y = self.height * stick.get_axis('y')
+
+
 
     def pressed(self):
         """
@@ -72,8 +97,6 @@ class MainScreen(Screen):
     def counter(self):
         self.ids.cnt.i += 1
         self.ids.cnt.text = str(self.ids.cnt.i)
-
-
 
     def animate_it(self, widget, *args):
         # Define The Animation you want to do
@@ -102,7 +125,6 @@ class MainScreen(Screen):
         animate.bind(on_complete=self.my_callback)
 
         SCREEN_MANAGER.current = 'button'
-
 
     def my_callback(self, *args):
         self.ids.my_label.text = "Wow! Look At That!"

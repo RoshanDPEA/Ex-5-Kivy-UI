@@ -107,11 +107,25 @@
 
 		Button:
 			text: "Press Me!"
-			font_size: 32
-			size_hint: .5, .5
+			font_size: 16
+			size_hint: .25, .25
 			pos_hint: {"center_x": 0.5}
 
 			on_release: root.animate_it(self)
+
+	Label:
+        id: stick1
+        font_size: 30
+        x: 0
+        y: 0
+        color: 1, 1, 1, 1
+        bold: True
+        size: 100, 100
+        outline_width: self.font_size * 0.1
+        outline_color: 0, 0, 0
+        text: str(self.x) + " " + str(self.y)
+
+
 
 
 <Screen2>:
