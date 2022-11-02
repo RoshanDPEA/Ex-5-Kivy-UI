@@ -16,6 +16,7 @@ passcode_screen_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 
 # Builder.load_file(passcode_screen_path)
 Builder.load_file("/home/student/RaspberryPiCommon/pidev/kivy/PassCodeScreen.kv")
+#Builder.load_file("/home/pi/Documents/RoshanKattil/pidev/kivy/PassCodeScreen.kv")
 ADMIN_EVENTS_SCREEN = None
 TRANSITION_BACK_SCREEN = 'main'
 

@@ -1,6 +1,6 @@
 import os
 
-# os.environ['DISPLAY'] = ":0.0"
+os.environ['DISPLAY'] = ":0.0"
 # os.environ['KIVY_WINDOW'] = 'egl_rpi'
 
 from kivy.app import App
@@ -23,7 +23,7 @@ from kivy.clock import Clock
 from kivy.properties import StringProperty
 import pygame
 
-pygame.init()
+#pygame.init()
 from pidev.Joystick import Joystick
 
 stick = Joystick(0, False)
@@ -56,10 +56,8 @@ Window.clearcolor = (1, 1, 1, 1)  # White
 
 
 class MainScreen(Screen):
-
-    def __int__(self, **kwargs):
-        print("init")
-        super().__int__(**kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         Clock.schedule_interval(self.update_stick, 0.01)
 
     def backroundChangeMain(self):
@@ -69,7 +67,6 @@ class MainScreen(Screen):
     # self.ids.stick.text = str(stick.get_axis('x')) + " " + str(stick.get_axis('y'))
 
     def update_stick(self, dt):
-        print("is run")
         self.ids.stick1.x = self.width * stick.get_axis('x')
         self.ids.stick1.y = self.height * stick.get_axis('y')
 
