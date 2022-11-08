@@ -26,8 +26,8 @@ import pygame
 #pygame.init()
 from pidev.Joystick import Joystick
 
-stick = Joystick(0, False)
-print(stick.get_axis('x'), stick.get_axis('y'))
+#stick = Joystick(0, False)
+#print(stick.get_axis('x'), stick.get_axis('y'))
 
 time = datetime
 
@@ -58,7 +58,7 @@ Window.clearcolor = (1, 1, 1, 1)  # White
 class MainScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        Clock.schedule_interval(self.update_stick, 0.01)
+        #Clock.schedule_interval(self.update_stick, 0.01)
 
     def backroundChangeMain(self):
         SCREEN_MANAGER.current = 'button'
@@ -66,9 +66,9 @@ class MainScreen(Screen):
     # def stickShow(self):
     # self.ids.stick.text = str(stick.get_axis('x')) + " " + str(stick.get_axis('y'))
 
-    def update_stick(self, dt):
-        self.ids.stick1.x = self.width * stick.get_axis('x')
-        self.ids.stick1.y = self.height * stick.get_axis('y')
+    #def update_stick(self, dt):
+    #    self.ids.stick1.x = self.width * stick.get_axis('x')
+    #    self.ids.stick1.y = self.height * stick.get_axis('y')
 
 
 
